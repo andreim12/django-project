@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} List of students trainer{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Students of {{ trainer }}</h1>
+    {% if all_students %}
+    <table class="table table-primary">
+        <thead>
+        <tr>
+            <th>No.</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>E-mail</th>
+            <th>Start Date</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for student in all_students %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ student.first_name }}</td>
+                <td>{{ student.last_name }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.start_date }}</td>
+                <td>{{ student.description }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h2 class="text-center">No students</h2>
+    {% endif %}
+
+{% endblock %}

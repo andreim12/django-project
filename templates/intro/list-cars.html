@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %} List of cars {% endblock %}
+{% block content %}
+
+    <div class="container-fluid">
+
+        <h1>Asezarea unui element pe mijlocul paginii</h1>
+        <br><br>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1>Impartirea pe 3 coloane</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Coloana 1</h3>
+            </div>
+            <div class="col-md-4">
+                <h3>Coloana2</h3>
+            </div>
+            <div class="col-md-4">
+                <h3>Coloana3</h3>
+            </div>
+        </div>
+        <br><br>
+
+        <h1>Tabel cu informatii</h1>
+        <table class="table table-success table-striped">
+            <thead>
+            <tr>
+                <th>Name of brand</th>
+                <th>Color</th>
+                <th>Year</th>
+                <th>Is new?</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for car in all_cars %}
+                {#                {% if car.brand == 'Volvo' %}#}
+                <tr>
+                    <td>{{ car.brand }}</td>
+                    <td>{{ car.color }}</td>
+                    <td>{{ car.year }}</td>
+                    <td>{{ car.is_new }}</td>
+                </tr>
+                {#                {% endif %}#}
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'football-players' %}" class="btn btn-outline-primary">Go to list of Real Madrid players</a>
+    </div>
+{% endblock %}

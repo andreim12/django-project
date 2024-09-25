@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %} List of Real Madrid players {% endblock %}
+{% block content %}
+    
+    
+  <table class="table table-info table-striped">
+      <thead>
+        <tr>
+            <th>Name of player</th>
+            <th>Team</th>
+            <th>Position</th>
+            <th>Contract Expire</th>
+            <th>Currently Playing</th>
+        </tr>
+      </thead>
+      <tbody>
+            {% for player in football_players %}
+                    <tr>
+                        <td>{{ player.name }}</td>
+                        <td>{{ player.team }}</td>
+                        <td>{{ player.position }}</td>
+                        <td>{{ player.contract_expire }}</td>
+                        <td>{{ player.currently_playing }}</td>
+                    </tr>
+            {% endfor %}
+      </tbody>
+  </table>
+    <a href="{% url 'list-of-cars' %}" class="btn btn-success">Go to list of cars</a>
+  
+{% endblock %}

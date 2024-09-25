@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Details - {{ trainer }} {% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <br><br>
+                <div class="card">
+                    <h5 class="card-header">View Details</h5>
+                    <div class="card-body">
+
+                        {% if trainer.profile %}
+                            <img src="{{ trainer.profile.url }}" height="100" alt="Picture profile">
+                        {% else %}
+                            <img src="{% static 'img.png' %}" height="100" alt="Picture profile">
+                        {% endif %}
+                    
+                        <h5 class="card-title">{{ trainer }}</h5>
+                        <p class="card-text"><strong>Email address</strong>: {{ trainer.email }}</p>
+                        <p class="card-text"><strong>Trainer course</strong>: {{ trainer.course }}</p>
+                        <a href="{% url 'list-of-trainers' %}" class="btn btn-primary">Go back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

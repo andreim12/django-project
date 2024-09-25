@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %} Create a new student {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <br><br>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Create a new student</h3>
+                    </div>
+
+                     <form method="POST" enctype="multipart/form-data">
+                         {% csrf_token %}
+                        <div class="card-body">
+                            {{ form.as_p }}
+                        </div>
+                        <div class="card-footer text-center">
+                              <button type="submit" class="btn btn-outline-success">Save</button>
+                        </div>
+                     </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+            <br><br>
+                <table class="table table-secondary">
+                    <thead>
+                        <tr>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in all_students %}
+                            <tr>
+                                <th>{{ student.first_name }}</th>
+                                <th>{{ student.last_name }}</th>
+                                <th><a href="{% url 'update-student' student.id %}" class="btn btn-outline-success">Update</a></th>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

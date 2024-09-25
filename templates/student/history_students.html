@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Students History{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Message</th>
+                        <th>Created at</th>
+                        <th>Active</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for history in history_students %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>
+                                <p>First Name: {{ history.message.first_name }}</p>
+                                <p>Last Name: {{ history.message.last_name }}</p>
+                                <p>Email: {{ history.message.email }}</p>
+                            </td>
+                            <td>{{ history.created_at|date:"d-m-Y H:i:s" }}</td>
+                            <td>{% if history.active %} Student Activ {% else %} Student Neactiv {% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

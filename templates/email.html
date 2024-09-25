@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Contul tău nou a fost creat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        .details {
+            margin-top: 20px;
+            border-top: 1px solid #dddddd;
+            padding-top: 10px;
+        }
+        .details strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #777777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contul tău nou a fost creat</h1>
+        <p>Dragă {{ fullname }},</p>
+        <p>Suntem bucuroși să te informăm că un nou cont a fost creat pentru tine pe platforma noastră.</p>
+        <div class="details">
+            <p><strong>Detaliile contului tău sunt următoarele:</strong></p>
+            <p><strong>Nume complet:</strong> {{ fullname }}</p>
+            <p><strong>Nume de utilizator:</strong> {{ username }}</p>
+            <p><strong>Pentru activare acceseaza acest link:</strong> <a href="{{ activation_url }}">Apasa aici</a></p>
+
+        </div>
+        <p>Te rugăm să accesezi platforma noastră și să te autentifici folosind numele de utilizator de mai sus. Dacă nu ai setat încă o parolă, te rugăm să urmezi instrucțiunile pentru a o crea.</p>
+        <p>Dacă ai întrebări sau întâmpini probleme, nu ezita să ne contactezi la <a href="mailto:ro63@aplicatiedjango.ro">ro63@aplicatiedjango.ro</a>.</p>
+        <p>Mulțumim că te-ai alăturat comunității noastre!</p>
+        <p class="footer">Cu stimă,<br>Echipa Racheta</p>
+    </div>
+</body>
+</html>

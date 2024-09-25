@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} List of trainers  {% endblock %}
+
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Filters</h3>
+                    </div>
+                    <form method="GET">
+                        <div class="card-body">
+                            {{ filter_form.as_p }}
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-outline-success">Search</button>
+                            <a href="{% url 'list-of-students' %}" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+                </div>
+                {% for trainer in all_trainers %}
+                    <div class="col-md-3">
+                    <div class="card">
+                        {% if trainer.profile %}
+                            <img src="{{ trainer.profile.url }}" height="300" alt="Picture profile">
+                        {% else %}
+                            <img src="{% static 'img.png' %}" height="300" alt="Picture profile">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ trainer }}</h5>
+                            <p class="card-text">Email address: {{ trainer.email }}</p>
+                            <p class="card-text">Course: {{ trainer.course }}</p>
+                        </div>
+                        {% if perms.trainer.view_student or perms.trainer.change_trainer or perms.trainer.delete_trainer %}
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                More actions
+                            </button>
+                            <ul class="dropdown-menu">
+                                {% if perms.trainer.change_trainer %}
+                                    <li><a class="dropdown-item" href="{% url 'update-trainers' trainer.id %}">Update</a></li>
+                                {% endif %}
+                                {% if perms.trainer.delete_trainer %}
+                                    <li><a class="dropdown-item" href="{% url 'delete_trainer' trainer.id %}">Delete</a></li>
+                                {% endif %}
+                                {% if perms.trainer.view_trainer %}
+                                    <li><a class="dropdown-item" href="{% url 'details-trainer' trainer.id %}">Details</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

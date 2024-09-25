@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}User History{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Data</th>
+                        <th>Created at</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for data in all_histories %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>
+                                <p>Last login: {% if last_login %} {{ data.user_data.last_login }} {% else %} Not available {% endif %}</p>
+                                <p>Username: {{ data.user_data.username }}</p>
+                            </td>
+                            <td>{{ data.created_at|date:"d-m-Y H:i:s" }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
